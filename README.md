@@ -4,204 +4,269 @@
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-green?style=flat&logo=node.js)](https://nodejs.org/)
 [![Socket.io](https://img.shields.io/badge/Socket.io-4.7%2B-black?style=flat&logo=socket.io)](https://socket.io/)
 
-A streaming battle royale game where 10-30 viewers control cute animal characters through real-time mobile voting every 10 seconds on a shrinking island.
+10-30人の視聴者がモバイル端末で10秒ごとにリアルタイム投票を行い、縮小する島でかわいい動物キャラクターをコントロールするストリーミング向けバトルロワイヤルゲームです。
 
-🎥 **Perfect for streamers on Twitch, YouTube Live, and Discord communities!**
+🎥 **Twitch、YouTube Live、Discordコミュニティでの配信に最適！**
 
-## 🎮 Game Features
+## 🎮 ゲーム機能
 
-- **Real-time Multiplayer**: Up to 30 players per game
-- **Mobile-First Voting**: Simple touch interface optimized for phones
-- **Streamer Dashboard**: Complete game management for streamers
-- **Cute Animal Characters**: 10 different animal types with unique personalities
-- **Island Survival**: Shrinking safe zones and resource management
-- **10-Second Voting Rounds**: Fast-paced decision making
-- **Free Tier Optimized**: Works on Netlify, Render.com, and Supabase free tiers
+- **リアルタイムマルチプレイ**: 1ゲーム最大30人
+- **モバイルファースト投票**: スマートフォン最適化されたタッチインターフェース
+- **配信者ダッシュボード**: 配信者向けの完全ゲーム管理機能
+- **かわいい動物キャラ**: 10種類の個性豊かな動物キャラクター
+- **島サバイバル**: 縮小する安全エリアとリソース管理
+- **10秒投票ラウンド**: テンポの良い意思決定システム
+- **無料枠最適化**: Netlify、Render.com、Supabaseの無料プランに対応
 
-## 🏗️ Architecture
+## 🏗️ アーキテクチャ
 
-- **Frontend**: Static HTML/CSS/JS hosted on Netlify
-- **Backend**: Node.js + Express + Socket.io on Render.com
-- **Database**: Supabase (PostgreSQL) with real-time features
-- **Real-time Communication**: WebSocket connections with auto-reconnection
+- **フロントエンド**: Netlifyでホストされる静的HTML/CSS/JS
+- **バックエンド**: Render.com上のNode.js + Express + Socket.io
+- **データベース**: Supabase（PostgreSQL）のリアルタイム機能
+- **リアルタイム通信**: 自動再接続機能付きWebSocket接続
 
-## 🚀 Quick Setup
+## 🚀 クイックスタート
 
-### 1. Clone and Install Dependencies
+### 前提条件
+
+- Node.js 18以上
+- npm または yarn
+- Git
+
+### 1. プロジェクトのクローン
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ben-saito/SurvivalIland.git
 cd SurvivalIland
+```
+
+### 2. 依存関係のインストール
+
+```bash
 npm install
 ```
 
-### 2. Environment Setup
-
-Copy `.env.example` to `.env` and fill in your configuration:
+### 3. 環境変数の設定
 
 ```bash
 cp .env.example .env
 ```
 
-Required environment variables:
-- `SUPABASE_URL`: Your Supabase project URL
-- `SUPABASE_ANON_KEY`: Your Supabase anonymous key
-- `PORT`: Server port (default: 3000)
-- `NODE_ENV`: Environment (development/production)
+`.env`ファイルを編集して、必要な設定を入力：
 
-### 3. Database Setup
+```env
+# データベース設定（オプション - ローカル開発時は不要）
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
 
-1. Create a Supabase project at https://supabase.com
-2. Run the SQL commands in `database/setup.sql` in your Supabase SQL editor
-3. Update your `.env` file with the Supabase credentials
+# サーバー設定
+PORT=3000
+NODE_ENV=development
 
-### 4. Run Development Server
+# ゲーム設定
+MAX_PLAYERS=30
+VOTING_DURATION=10000
+ISLAND_SIZE=10
+```
+
+### 4. 開発サーバーの起動
 
 ```bash
 npm run dev
 ```
 
-The application will be available at:
-- Main page: http://localhost:3000
-- Streamer dashboard: http://localhost:3000/streamer
-- Mobile interface: http://localhost:3000/mobile/ROOMID
+サーバーが http://localhost:3000 で起動します。
 
-## 📱 How to Play
+### 5. ゲームテスト
 
-### For Streamers:
-1. Visit `/streamer` to create a game room
-2. Share the QR code or room ID with viewers
-3. Start the game when enough players join
-4. Watch the chaos unfold!
+1. **配信者ダッシュボード**: http://localhost:3000/streamer.html
+   - 配信者名を入力してルーム作成
+   - QRコードとルームIDを確認
 
-### For Viewers:
-1. Scan QR code or visit `/mobile/ROOMID` on your phone
-2. Enter your player name
-3. Vote every 10 seconds using the touch interface
-4. Try to be the last survivor!
+2. **モバイル投票画面**: http://localhost:3000/mobile.html
+   - ルームIDを入力
+   - プレイヤー名を入力して参加
 
-## 🔧 Game Mechanics
+3. **ゲーム開始**
+   - 配信者ダッシュボードで「ゲーム開始」をクリック
+   - モバイル画面で投票開始
 
-### Movement System
-- **4-Direction Movement**: North, South, East, West
-- **Grid-based Island**: 10x10 initial grid
-- **Majority Vote Wins**: Most popular action is executed
+## 🛠️ 本番デプロイ
 
-### Survival Elements
-- **Shrinking Island**: Safe zone reduces every 3 rounds
-- **Resource Collection**: Food, wood, and stone scattered on island
-- **Shelter Building**: Use wood to build protective shelters
-- **Health System**: 100 HP, reduced by hazards and island damage
+### Netlify（フロントエンド）
 
-### Voting Actions
-- **Movement**: Move in cardinal directions
-- **Collect**: Gather nearby resources
-- **Build**: Construct shelters with materials
+1. Netlifyアカウントにログイン
+2. GitHubリポジトリを接続
+3. ビルド設定:
+   - Build command: `npm run build`
+   - Publish directory: `public`
 
-## 🚀 Deployment
+### Render.com（バックエンド）
 
-### Netlify (Frontend)
-1. Connect your GitHub repository to Netlify
-2. Build settings are configured in `netlify.toml`
-3. Set environment variables in Netlify dashboard
+1. Render.comアカウントにログイン
+2. GitHubリポジトリから新しいWeb Serviceを作成
+3. 設定:
+   - Runtime: Node
+   - Build command: `npm install`
+   - Start command: `npm start`
 
-### Render.com (Backend)
-1. Create a new Web Service on Render.com
-2. Use `render.yaml` for configuration
-3. Add environment variables in Render dashboard
+### Supabase（データベース）
 
-### Supabase (Database)
-1. Create project and run setup SQL
-2. Configure RLS policies as needed
-3. Add database credentials to environment variables
+1. Supabaseプロジェクトを作成
+2. `database/setup.sql`のSQLを実行
+3. 環境変数にSupabase URLとAPIキーを設定
 
-## 🎯 Target Performance
+## 🎯 ゲームプレイ
 
-- **Concurrent Users**: 50-100 viewers per stream
-- **Latency**: 200-500ms for voting updates  
-- **Mobile Compatibility**: iOS Safari 6+, Android Chrome
-- **Free Tier Friendly**: Optimized for free hosting limits
+### 配信者向け
 
-## 🔒 Security Features
+1. **ルーム作成**: 配信者ダッシュボードでルーム作成
+2. **QRコード共有**: 視聴者にQRコードまたはルームIDを共有
+3. **ゲーム管理**: 開始、一時停止、終了の制御
+4. **プレイヤー監視**: リアルタイムプレイヤー状況確認
 
-- Input sanitization for player names
-- Rate limiting on voting actions
-- XSS protection
-- Connection validation
-- Basic anti-griefing measures
+### 視聴者向け
 
-## 📊 Monitoring
+1. **ルーム参加**: スマートフォンでルームIDを入力
+2. **キャラ割当**: 自動で動物キャラクターが割り当て
+3. **投票参加**: 10秒ごとの投票で移動・アクションを決定
+4. **結果確認**: リアルタイムで投票結果と移動を確認
 
-The application includes:
-- Health check endpoint (`/health`)
-- Connection status monitoring
-- Game session analytics
-- Error logging and reporting
+### アクション種類
 
-## 🎨 Customization
+- **移動**: ↑（北）、↓（南）、←（西）、→（東）
+- **アクション**: 攻撃、収集、建設、休憩
 
-### Animal Characters
-Edit the `animalTypes` array in `server/gameManager.js` to add new characters.
+## 📱 モバイル対応
 
-### Game Balance
-Adjust timing and mechanics in the game manager:
-- `votingDuration`: Time for each voting round
-- `maxPlayers`: Maximum players per game  
-- `islandSize`: Initial island dimensions
+- **44px以上のタッチターゲット**: iOS/Androidに最適化
+- **レスポンシブデザイン**: 様々な画面サイズに対応
+- **バッテリー最適化**: 効率的な通信で電池消耗を抑制
+- **オフライン対応**: ネットワーク切断時の優雅な劣化
 
-### UI Themes
-Modify CSS files in `/public/css/` for custom styling.
+## ⚙️ 設定オプション
 
-## 🐛 Troubleshooting
+### ゲームバランス
 
-### Common Issues
+`server/gameManager.js`で調整可能：
 
-1. **Server Sleep on Render.com**
-   - Free tier servers sleep after 15 minutes
-   - Cold start takes ~30 seconds
-   - Use health checks to keep alive during streams
+- `votingDuration`: 投票時間（デフォルト: 10秒）
+- `maxPlayers`: 最大プレイヤー数（デフォルト: 30人）
+- `islandSize`: 島の初期サイズ（デフォルト: 10x10）
 
-2. **Mobile Voting Issues**
-   - Ensure 44px minimum touch targets
-   - Test on actual devices, not just browser dev tools
-   - Check for network connectivity issues
+### 動物キャラクター
 
-3. **Database Connection Limits**
-   - Supabase free tier has connection limits
-   - Implement connection pooling for high traffic
-   - Monitor usage in Supabase dashboard
+新しいキャラクターを追加する場合：
 
-### Debug Mode
-Set `NODE_ENV=development` for verbose logging.
+```javascript
+this.animalTypes = [
+  'bear', 'fox', 'rabbit', 'deer', 'wolf', 
+  'cat', 'dog', 'panda', 'lion', 'tiger'
+  // 新しいキャラクターを追加
+];
+```
 
-## 🤝 Contributing
+## 🎨 カスタマイズ
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly on mobile devices
-5. Submit a pull request
+### UIテーマ
 
-## 📜 License
+`/public/css/`のCSSファイルを編集してカスタムスタイリング
 
-MIT License - see LICENSE file for details.
+### イベントシステム
 
-## 🎬 Perfect for Streaming
+`server/eventSystem.js`でランダムイベントを追加・編集
 
-This game is designed specifically for:
-- **Twitch streamers** - Highly interactive and entertaining
-- **YouTube Live** - Mobile-friendly viewer participation  
-- **Discord communities** - Easy setup for community events
-- **Content creators** - Viral moments and highlight clips
+### 物理エンジン
 
-Ready to create chaos on the island? Let the battle begin! 🏝️⚔️
+`server/physicsSystem.js`で衝突・押し合いシステムを調整
 
-## 🔗 Links
+## 🐛 トラブルシューティング
 
-- **GitHub Repository**: [github.com/ben-saito/SurvivalIland](https://github.com/ben-saito/SurvivalIland)
-- **Issues & Feature Requests**: [GitHub Issues](https://github.com/ben-saito/SurvivalIland/issues)
-- **Releases**: [GitHub Releases](https://github.com/ben-saito/SurvivalIland/releases)
+### よくある問題
+
+1. **Render.com サーバースリープ**
+   - 無料プランでは15分後にスリープ
+   - コールドスタート約30秒
+   - 配信中はヘルスチェックで維持
+
+2. **モバイル投票の問題**
+   - 実機テストを推奨（ブラウザ開発者ツールでは不十分）
+   - ネットワーク接続状況を確認
+   - 44px以上のタッチターゲットを確保
+
+3. **データベース接続制限**
+   - Supabase無料プランには接続制限あり
+   - 高トラフィック時はコネクションプーリングを実装
+   - Supabaseダッシュボードで使用状況を監視
+
+### デバッグモード
+
+詳細ログを有効にするには：
+
+```bash
+NODE_ENV=development npm run dev
+```
+
+## 📊 パフォーマンス
+
+### 想定負荷
+
+- **50-100人同時視聴者**: 無料プラン対応
+- **レスポンス時間**: 200-500ms目標
+- **投票処理**: 10秒間隔で30人まで
+
+### 最適化ポイント
+
+- インメモリゲーム状態管理
+- 効率的なSocket.io通信
+- モバイルブラウザ最適化
+- 無料プラン制限内のリソース使用
+
+## 🎬 配信での活用
+
+### プラットフォーム対応
+
+- **Twitch**: チャットコマンド統合準備済み
+- **YouTube Live**: Super Chat連携可能
+- **Discord**: コミュニティイベント向け
+- **その他**: カスタムサムネイル・ハイライト生成
+
+### バイラル要素
+
+- 予期しない物理現象
+- コミカルなキャラクター反応  
+- ハイライト自動記録
+- ソーシャルメディア共有機能
+
+## 🤝 コントリビューション
+
+1. リポジトリをフォーク
+2. フィーチャーブランチを作成
+3. 変更を実装
+4. モバイルデバイスで徹底テスト
+5. プルリクエストを提出
+
+## 📜 ライセンス
+
+MIT License - 詳細はLICENSEファイルを参照
+
+## 🎬 配信に最適
+
+このゲームは以下の用途に特化して設計されています：
+
+- **Twitchストリーマー** - 高いインタラクティブ性とエンターテイメント性
+- **YouTube Live** - モバイルフレンドリーな視聴者参加
+- **Discordコミュニティ** - コミュニティイベント用の簡単セットアップ
+- **コンテンツクリエイター** - バイラルモーメントとハイライトクリップ
+
+島で混沌を作り出す準備はできましたか？バトル開始！ 🏝️⚔️
+
+## 🔗 リンク
+
+- **GitHubリポジトリ**: [github.com/ben-saito/SurvivalIland](https://github.com/ben-saito/SurvivalIland)
+- **Issue・機能リクエスト**: [GitHub Issues](https://github.com/ben-saito/SurvivalIland/issues)
+- **リリース**: [GitHub Releases](https://github.com/ben-saito/SurvivalIland/releases)
 
 ---
 
-*Built with ❤️ by [Claude Code](https://claude.ai/code) - AI-powered development assistant*
+*❤️ [Claude Code](https://claude.ai/code) - AI搭載開発アシスタントによって作成*
