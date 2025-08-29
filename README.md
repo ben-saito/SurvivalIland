@@ -1,6 +1,12 @@
 # 🏝️ Survival Island Battle - サバイバル島バトル
 
+[![GitHub Repository](https://img.shields.io/badge/GitHub-ben--saito%2FSurvivalIland-blue?style=flat&logo=github)](https://github.com/ben-saito/SurvivalIland)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green?style=flat&logo=node.js)](https://nodejs.org/)
+[![Socket.io](https://img.shields.io/badge/Socket.io-4.7%2B-black?style=flat&logo=socket.io)](https://socket.io/)
+
 A streaming battle royale game where 10-30 viewers control cute animal characters through real-time mobile voting every 10 seconds on a shrinking island.
+
+🎥 **Perfect for streamers on Twitch, YouTube Live, and Discord communities!**
 
 ## 🎮 Game Features
 
@@ -189,3 +195,13 @@ This game is designed specifically for:
 - **Content creators** - Viral moments and highlight clips
 
 Ready to create chaos on the island? Let the battle begin! 🏝️⚔️
+
+## 🔗 Links
+
+- **GitHub Repository**: [github.com/ben-saito/SurvivalIland](https://github.com/ben-saito/SurvivalIland)
+- **Issues & Feature Requests**: [GitHub Issues](https://github.com/ben-saito/SurvivalIland/issues)
+- **Releases**: [GitHub Releases](https://github.com/ben-saito/SurvivalIland/releases)
+
+---
+
+*Built with ❤️ by [Claude Code](https://claude.ai/code) - AI-powered development assistant*
