@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__serena__activate_project",
+      "Bash(mkdir:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "serena"
+  ]
+}

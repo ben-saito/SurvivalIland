@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survival Island Battle - サバイバル島バトル</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🏝️ サバイバル島バトル</h1>
+      <p>Survival Island Battle - Streaming Battle Royale</p>
+    </header>
+    
+    <main>
+      <div class="welcome-section">
+        <div class="game-description">
+          <h2>ゲームについて</h2>
+          <p>視聴者がモバイル端末で投票し、かわいい動物キャラクターを操作するリアルタイムバトルロワイヤルゲーム！</p>
+          <ul>
+            <li>🐻 10種類のかわいい動物から自動選択</li>
+            <li>📱 スマホで簡単投票（10秒ごと）</li>
+            <li>🏝️ 縮小する島でサバイバル</li>
+            <li>👑 最後の生存者が勝利</li>
+          </ul>
+        </div>
+        
+        <div class="action-buttons">
+          <button id="streamerBtn" class="btn btn-primary">
+            🎥 配信者としてゲーム作成
+          </button>
+          <div class="join-section">
+            <input type="text" id="roomIdInput" placeholder="ルームID入力" maxlength="8">
+            <button id="joinBtn" class="btn btn-secondary">
+              📱 ゲームに参加
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="features">
+        <div class="feature-card">
+          <h3>📺 配信最適化</h3>
+          <p>Twitch、YouTube Liveでの配信に最適化されたUI</p>
+        </div>
+        <div class="feature-card">
+          <h3>🎮 簡単操作</h3>
+          <p>QRコードでスマホから瞬時に参加</p>
+        </div>
+        <div class="feature-card">
+          <h3>⚡ リアルタイム</h3>
+          <p>Socket.ioによる低遅延通信</p>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>&copy; 2024 Survival Island Battle Team</p>
+    </footer>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

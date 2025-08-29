@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>モバイル投票 - Survival Island Battle</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/mobile.css">
+</head>
+<body>
+  <div class="mobile-interface">
+    <!-- Header -->
+    <header class="mobile-header">
+      <h1>🏝️ サバイバル島バトル</h1>
+      <div class="player-info" id="playerInfo" style="display: none;">
+        <div class="player-avatar">
+          <span id="animalEmoji">🐻</span>
+        </div>
+        <div class="player-details">
+          <div id="playerName">プレイヤー</div>
+          <div class="health-bar">
+            <div id="healthBar" class="health-fill"></div>
+            <span id="healthText">100/100</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Join Section -->
+    <div id="joinSection" class="section">
+      <div class="join-form">
+        <h2>ゲームに参加</h2>
+        <input type="text" id="roomIdInput" placeholder="ルームID (例: ABC123)" maxlength="8" style="text-transform: uppercase;">
+        <input type="text" id="playerNameInput" placeholder="プレイヤー名" maxlength="20">
+        <button id="joinGameBtn" class="btn btn-primary">参加する</button>
+      </div>
+    </div>
+
+    <!-- Waiting Section -->
+    <div id="waitingSection" class="section" style="display: none;">
+      <div class="waiting-content">
+        <h2>ゲーム開始を待っています...</h2>
+        <div class="waiting-spinner">⏳</div>
+        <div id="waitingPlayerCount">プレイヤー数: 1</div>
+        <p>配信者がゲームを開始するまでお待ちください</p>
+      </div>
+    </div>
+
+    <!-- Voting Section -->
+    <div id="votingSection" class="section" style="display: none;">
+      <div class="voting-header">
+        <h2>投票してください！</h2>
+        <div class="timer-display">
+          <div id="votingTimer" class="timer-circle">10</div>
+        </div>
+      </div>
+
+      <div class="voting-controls">
+        <!-- Movement buttons -->
+        <div class="movement-grid">
+          <div class="movement-row">
+            <button class="vote-btn movement-btn" data-action="north">
+              ⬆️<br>北
+            </button>
+          </div>
+          <div class="movement-row">
+            <button class="vote-btn movement-btn" data-action="west">
+              ⬅️<br>西
+            </button>
+            <div class="center-indicator">🧭</div>
+            <button class="vote-btn movement-btn" data-action="east">
+              ➡️<br>東
+            </button>
+          </div>
+          <div class="movement-row">
+            <button class="vote-btn movement-btn" data-action="south">
+              ⬇️<br>南
+            </button>
+          </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="action-buttons">
+          <button class="vote-btn action-btn" data-action="collect">
+            🥕<br>収集
+          </button>
+          <button class="vote-btn action-btn" data-action="build">
+            🏠<br>建設
+          </button>
+        </div>
+      </div>
+
+      <div class="vote-status" id="voteStatus">
+        <div id="voteConfirmation" style="display: none;">
+          ✅ 投票完了: <span id="selectedAction"></span>
+        </div>
+        <div id="voteProgress">
+          投票者: <span id="voteCount">0</span> / <span id="totalPlayers">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="resultsSection" class="section" style="display: none;">
+      <div class="results-content">
+        <h2>ラウンド結果</h2>
+        <div id="roundResults">
+          <div class="winning-action">
+            勝利アクション: <span id="winningActionDisplay"></span>
+          </div>
+          <div id="voteBreakdown"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game End Section -->
+    <div id="gameEndSection" class="section" style="display: none;">
+      <div class="game-end-content">
+        <h2>🎉 ゲーム終了！</h2>
+        <div id="winnerDisplay"></div>
+        <div id="finalStats"></div>
+        <button id="playAgainBtn" class="btn btn-primary">もう一度プレイ</button>
+      </div>
+    </div>
+
+    <!-- Error Display -->
+    <div id="errorSection" class="section error-section" style="display: none;">
+      <div class="error-content">
+        <h2>⚠️ エラー</h2>
+        <div id="errorMessage"></div>
+        <button id="retryBtn" class="btn btn-secondary">再試行</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/mobile.js"></script>
+</body>
+</html>

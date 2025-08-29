@@ -1,0 +1,34 @@
+[build]
+  publish = "public"
+  command = "echo 'Static site build complete'"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://survival-island-battle.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/socket.io/*"
+  to = "https://survival-island-battle.onrender.com/socket.io/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/mobile/:roomId"
+  to = "/mobile.html"
+  status = 200
+
+[[redirects]]
+  from = "/streamer"
+  to = "/streamer.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  NODE_ENV = "production"
+  BASE_URL = "https://survival-island-battle.netlify.app"

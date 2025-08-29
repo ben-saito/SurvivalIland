@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>配信者ダッシュボード - Survival Island Battle</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/streamer.css">
+</head>
+<body>
+  <div class="streamer-dashboard">
+    <header class="dashboard-header">
+      <h1>🎥 配信者ダッシュボード</h1>
+      <div class="room-info" id="roomInfo" style="display: none;">
+        <span id="roomIdDisplay"></span>
+        <span id="playerCount">0</span> / <span id="maxPlayers">30</span> プレイヤー
+      </div>
+    </header>
+
+    <!-- Room Creation Section -->
+    <div id="createRoomSection" class="section">
+      <h2>ゲームルーム作成</h2>
+      <div class="form-group">
+        <label for="streamerName">配信者名:</label>
+        <input type="text" id="streamerName" placeholder="あなたの配信者名" maxlength="20">
+      </div>
+      <button id="createRoomBtn" class="btn btn-primary">ルーム作成</button>
+    </div>
+
+    <!-- Game Control Section -->
+    <div id="gameControlSection" class="section" style="display: none;">
+      <div class="control-panel">
+        <button id="startGameBtn" class="btn btn-success">ゲーム開始</button>
+        <button id="pauseGameBtn" class="btn btn-warning" style="display: none;">一時停止</button>
+        <button id="skipRoundBtn" class="btn btn-secondary" style="display: none;">ラウンドスキップ</button>
+        <button id="endGameBtn" class="btn btn-danger" style="display: none;">ゲーム終了</button>
+      </div>
+      
+      <div class="qr-section">
+        <h3>📱 参加用QRコード</h3>
+        <div id="qrCodeContainer"></div>
+        <div id="mobileUrl"></div>
+      </div>
+    </div>
+
+    <div class="dashboard-content" id="dashboardContent" style="display: none;">
+      <!-- Game State Display -->
+      <div class="game-state section">
+        <h3>ゲーム状態</h3>
+        <div class="status-info">
+          <div class="status-item">
+            <label>ステータス:</label>
+            <span id="gameStatus">待機中</span>
+          </div>
+          <div class="status-item">
+            <label>ラウンド:</label>
+            <span id="currentRound">0</span>
+          </div>
+          <div class="status-item">
+            <label>投票中:</label>
+            <span id="votingStatus">❌</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Island Map Display -->
+      <div class="island-display section">
+        <h3>🏝️ 島マップ</h3>
+        <div id="islandGrid" class="island-grid"></div>
+      </div>
+
+      <!-- Player List -->
+      <div class="player-list section">
+        <h3>👥 プレイヤー一覧</h3>
+        <div id="playerListContent"></div>
+      </div>
+
+      <!-- Voting Status -->
+      <div class="voting-section section" id="votingSection" style="display: none;">
+        <h3>📊 投票状況</h3>
+        <div class="voting-timer">
+          <div id="votingCountdown">10</div>
+        </div>
+        <div id="votingResults"></div>
+      </div>
+
+      <!-- Game Log -->
+      <div class="game-log section">
+        <h3>📝 ゲームログ</h3>
+        <div id="gameLog" class="log-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/streamer.js"></script>
+</body>
+</html>

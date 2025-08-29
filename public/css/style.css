@@ -1,0 +1,300 @@
+/* Base styles for Survival Island Battle */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+main {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.game-description {
+  margin-bottom: 30px;
+}
+
+.game-description h2 {
+  color: #4a5568;
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+.game-description p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.game-description ul {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.game-description li {
+  background: #f7fafc;
+  padding: 12px 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+  font-size: 1rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px; /* iOS touch target */
+  min-width: 44px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.btn-secondary {
+  background: #48bb78;
+  color: white;
+  box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+}
+
+.btn-secondary:hover {
+  background: #38a169;
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: #48bb78;
+  color: white;
+}
+
+.btn-warning {
+  background: #ed8936;
+  color: white;
+}
+
+.btn-danger {
+  background: #f56565;
+  color: white;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Action buttons section */
+.action-buttons {
+  margin: 30px 0;
+}
+
+.action-buttons .btn {
+  margin: 10px;
+}
+
+.join-section {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#roomIdInput {
+  padding: 12px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 25px;
+  font-size: 1rem;
+  width: 200px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#roomIdInput:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Features section */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.feature-card {
+  background: #f7fafc;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+
+.feature-card h3 {
+  color: #4a5568;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.feature-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Section styling */
+.section {
+  background: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.section h2,
+.section h3 {
+  color: #4a5568;
+  margin-bottom: 15px;
+}
+
+/* Form elements */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #4a5568;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  
+  .join-section {
+    flex-direction: column;
+  }
+  
+  #roomIdInput {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    background: #000;
+    border: 2px solid #fff;
+  }
+  
+  .feature-card {
+    border: 2px solid #333;
+  }
+}
